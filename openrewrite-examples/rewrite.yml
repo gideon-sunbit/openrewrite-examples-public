@@ -1,0 +1,10 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.UpgradeDependencyVersionExample
+displayName: Upgrade Gradle dependency versions example
+recipeList:
+  - org.openrewrite.gradle.UpgradeDependencyVersion:
+      groupId: com.google.guava
+      artifactId: guava
+      newVersion: 32.1.1
+      versionPattern: '-jre'
