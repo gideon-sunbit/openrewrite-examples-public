@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id("org.openrewrite.rewrite") version("6.16.4")
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    rewrite("org.openrewrite.recipe:rewrite-spring:5.15.0")
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+rewrite {
+    activeRecipe("org.openrewrite.java.spring.boot3.EnableVirtualThreads")
+}
+
+test {
+    useJUnitPlatform()
+}
